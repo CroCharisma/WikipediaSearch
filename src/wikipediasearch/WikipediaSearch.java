@@ -22,7 +22,7 @@ public class WikipediaSearch {
             String title = "";
             while( !article.matches("(Philosophy|Philosophical)") && cnt < 250 ){
                 Document doc = Jsoup.connect("https://en.wikipedia.org/wiki/" + article ).get();
-                //System.out.println(doc.title());
+                System.out.println(doc.title());
                 if( cnt == 0){
                     title = doc.title();
                 }
@@ -72,15 +72,15 @@ public class WikipediaSearch {
                         article = ( code.get(i).substring( code.get(i).lastIndexOf("/")+1 ,  code.get(i).lastIndexOf("\"") ));
                         cnt++;
                         break;
-                        
+                        //ahhtttttttttttt
                     }
                     
                 }
             }
             System.out.println( title );
-//            if( cnt == 0 ){
-//                System.out.println("Never gets there, Sorry!");
-//            }
+            if( cnt == 0 ){
+                System.out.println("Never gets there, Sorry!");
+            }
             if( cnt > 249 ){
                 System.out.println("\"ITS A LOOP\" - Admiral Akbar" );
             }
