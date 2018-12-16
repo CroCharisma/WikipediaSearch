@@ -12,8 +12,6 @@ public class WikipediaSearch {
 
     public static void main(String[] args) {
         
-        
-        
         try
         {
             
@@ -99,3 +97,4 @@ public class WikipediaSearch {
 //\\
 //\\    
 }
+//i want it to be 100 lines frank thats why its there :dab:
