@@ -21,9 +21,22 @@ public class WikipediaSearch {
             List<String> Ahh = new ArrayList();
             boolean philNye = false;
             int cnt = 0;
-            while( !article.equals("Philosophy") ){
+            String title = "";
+            while( !article.matches("(Philosophy|Philosophical)") && cnt < 250 ){
                 Document doc = Jsoup.connect("https://en.wikipedia.org/wiki/" + article ).get();
-                System.out.println(doc.title());
+                //System.out.println(doc.title());
+                if( cnt == 0){
+                    title = doc.title();
+                }
+                if( cnt == 50 ){
+                    System.out.println("This might take a bit...");
+                }
+                if( cnt == 100 ){
+                    System.out.println("Maybe more than a bit...");
+                }
+                if( cnt == 150 ){
+                    System.out.println("Its probably a loop just wait...");
+                }
                 String body = (doc.body()).toString();
                 Scanner line = new Scanner( body );
                 //System.out.println( body );
@@ -59,14 +72,21 @@ public class WikipediaSearch {
                     if( code.get(i).contains( "href=") && !code.get(i).contains(":") && !code.get(i).contains("cite") && !code.get(i).contains(".") && !article.contains( code.get(i) )){
                         //article = code.get(i);
                         article = ( code.get(i).substring( code.get(i).lastIndexOf("/")+1 ,  code.get(i).lastIndexOf("\"") ));
-                        System.out.println( code.get(i) );
                         cnt++;
                         break;
                         
                     }
                     
                 }
-            }    
+            }
+            System.out.println( title );
+//            if( cnt == 0 ){
+//                System.out.println("Never gets there, Sorry!");
+//            }
+            if( cnt > 249 ){
+                System.out.println("\"ITS A LOOP\" - Admiral Akbar" );
+            }
+            else System.out.println( cnt + " jumps to Philosophy" );
             
         }
         catch (IOException e)
